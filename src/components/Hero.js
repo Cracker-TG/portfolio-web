@@ -1,10 +1,11 @@
 import React from "react";
+import avatar from "../assets/images/my-photo.png";
 
 function Hero() {
   const icon = (
     <svg
-      width="24"
-      height="24"
+      width="100"
+      height="100"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -19,14 +20,8 @@ function Hero() {
 
   return (
     <div className="hero-box">
-      <div className="hero-main">
-        <div className="name">
-          <h1>Hi I AM WINAI WANGTHAKLANG.</h1>
-        </div>
-        {/**
-         * 
-        <div className="my-photo"></div>
-         */}
+      <div className="name1">
+        <p>Hi I'am Winai Wangthaklang </p>
       </div>
       <div className="hero-des">
         <div className="text">

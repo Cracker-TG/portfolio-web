@@ -1,24 +1,50 @@
-$bg-color: #000000;
-$typewriteSpeed: 6s;
-$typeWriterCharacters: 16;
+$bg-color: #ffffff;
+$typewriteSpeed: 2s;
+$typeWriterCharacters: 26;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   background: $bg-color;
 }
 
-.my-photo {
-  background-image: url("../assets//images/my-photo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 773px;
-  width: 960px;
+
+.container{
+  width: 100%;
 }
 
-.name {
+.hero-box{
+ 
+}
+
+.my-photo {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+.name1{
+    font-size: 63px;
+    width: fit-content;
+    height: fit-content;
+}
+.name2{
+    font-size: 63px;
+    width: fit-content;
+    height: fit-content;
+}
+.hero-des{
+  text-align: center;
+  font-size: 40px;
+}
+
+.name1 {
   margin: 1em;
   //outline: 2px solid red;
-  color: green;
   position: relative;
   width: max-content;
   &:before,
