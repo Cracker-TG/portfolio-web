@@ -1,12 +1,12 @@
 import React from "react";
+import Hero from "./components/Hero";
 
-function App()
-{
-    return (
-        <>
-        <h1>app.js</h1>
-        </>
-    )
+function App() {
+  return (
+    <div className="container">
+      <Hero />
+    </div>
+  );
 }
 
 export default App;

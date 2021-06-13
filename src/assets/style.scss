@@ -1,3 +1,57 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+$bg-color: #000000;
+$typewriteSpeed: 6s;
+$typeWriterCharacters: 16;
+
+body {
+  background: $bg-color;
+}
+
+.my-photo {
+  background-image: url("../assets//images/my-photo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 773px;
+  width: 960px;
+}
+
+.name {
+  margin: 1em;
+  //outline: 2px solid red;
+  color: green;
+  position: relative;
+  width: max-content;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  &:before {
+    background: $bg-color;
+    animation: typewriter $typewriteSpeed steps($typeWriterCharacters) 1s
+      forwards;
+  }
+  &:after {
+    width: 0.25rem;
+    background: red;
+    animation: typewriter $typewriteSpeed steps($typeWriterCharacters) 1s
+        forwards,
+      blink 750ms steps(26) infinite;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
