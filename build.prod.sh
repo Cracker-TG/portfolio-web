@@ -1,0 +1,1 @@
+docker buildx build --platform linux/amd64  --build-arg SERVER_NAME=wangthaklang.com -t crackerwinai/cr-portfolio-web .
