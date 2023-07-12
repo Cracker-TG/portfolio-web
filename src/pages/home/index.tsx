@@ -1,5 +1,6 @@
 import IconEmail from "@/assets/email.png";
 import IconGitHub from "@/assets/github.png";
+import IconLinkedIn from "@/assets/linkedin.png";
 
 function HomePage(): JSX.Element {
   return (
@@ -8,7 +9,10 @@ function HomePage(): JSX.Element {
       <div className="grid-wrap">
         <div className="grid">
           <div className="grid__col grid__col--two-thirds">
-            <h1>Hey, I'm Crack Winai</h1>
+            <h1>Hey, I'm Crack</h1>{" "}
+            <p>
+              <code>Winai Wangthaklang</code>
+            </p>
             <h2 className="">Web developer &amp; Full-Stack developer.</h2>
           </div>
           <div className="grid__col grid__col--one-third align-right">
@@ -55,6 +59,20 @@ function HomePage(): JSX.Element {
               className="colophon__image"
             />
             <span className="colophon__text">Github</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/winai-wangthaklang-02432919b"
+            className="colophon__link"
+            target="_blank"
+          >
+            <img
+              width={64}
+              src={IconLinkedIn}
+              alt="An icon for Github"
+              className="colophon__image"
+            />
+            <span className="colophon__text">LinkedIn</span>
           </a>
         </div>
       </footer>
