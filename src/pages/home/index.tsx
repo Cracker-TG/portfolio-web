@@ -1,6 +1,7 @@
 import IconEmail from "@/assets/email.png";
 import IconGitHub from "@/assets/github.png";
 import IconLinkedIn from "@/assets/linkedin.png";
+import TypingText from "./typing";
 
 function HomePage(): JSX.Element {
   return (
@@ -9,10 +10,7 @@ function HomePage(): JSX.Element {
       <div className="grid-wrap">
         <div className="grid">
           <div className="grid__col grid__col--two-thirds">
-            <h1>Hey, I'm Crack</h1>{" "}
-            <p>
-              <code>Winai Wangthaklang</code>
-            </p>
+            <h1>Hey, I'm Crack</h1> <TypingText />
             <h2 className="">Web developer &amp; Full-Stack developer.</h2>
           </div>
           <div className="grid__col grid__col--one-third align-right">

@@ -3,11 +3,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  min-height: 100vh;
-}
-
 html {
   font-size: 150%;
   overflow-y: scroll;
@@ -28,7 +23,6 @@ textarea {
 
 body {
   background: ##d7d7d7;
-  padding: 1.3333333333rem;
 }
 
 @media all and (min-width: 40em) {
@@ -223,6 +217,7 @@ a:active {
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100vh - 2.6666666667rem);
+  padding: 0.5rem;
 }
 
 @media all and (min-width: 45em) {
@@ -842,10 +837,37 @@ a:active {
   background: #4c3d6d;
 }
 
-code {
+.code {
   font-size: 20px;
   line-height: 28px;
   background-color: #000000;
   color: #ffffff;
   text-decoration: underline;
+}
+
+.typing-text {
+  display: inline-block;
+  font-size: 24px;
+  font-family: monospace;
+  position: relative;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 100%;
+  margin-left: 4px;
+  background-color: #000;
+  animation: blink 1s infinite;
+  position: absolute;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
