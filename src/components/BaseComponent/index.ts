@@ -1,3 +1,4 @@
 import Spin from "./Spin";
+import Button from "./Button";
 
-export { Spin };
+export { Spin, Button };

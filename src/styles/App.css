@@ -22,7 +22,11 @@ textarea {
 }
 
 body {
+  margin: 0;
   background: ##d7d7d7;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @media all and (min-width: 40em) {
@@ -31,43 +35,16 @@ body {
   }
 }
 
-h1 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -0.0416666667rem;
-  line-height: 1;
-  margin: 0 0 0.6666666667rem;
-  padding-top: 0.6666666667rem;
-}
-
-h2 {
-  font-size: 0.6666666667rem;
-  font-weight: normal;
-  margin: 0.6666666667rem 0 0.3333333333rem;
-}
-
 @media all and (min-width: 45em) {
   h1 {
     font-size: 3rem;
     letter-spacing: -0.0833333333rem;
   }
-
-  h2,
-  p {
-    font-size: 0.8333333333rem;
-  }
-
-  .subtitle {
-    font-size: 2rem;
-  }
 }
 
-@media all and (min-width: 60em) {
-  h2,
+@media all and (max-width: 45em) {
   p {
-    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -218,6 +195,12 @@ a:active {
   justify-content: space-between;
   min-height: calc(100vh - 2.6666666667rem);
   padding: 0.5rem;
+}
+
+@media all and (max-width: 45em) {
+  .wrapper {
+    text-align: center;
+  }
 }
 
 @media all and (min-width: 45em) {
@@ -485,6 +468,12 @@ a:active {
   flex: 1;
   padding-top: 0.6666666667rem;
   text-align: left;
+}
+
+@media all and (max-width: 45em) {
+  .colophon {
+    text-align: center;
+  }
 }
 
 .colophon__link {
