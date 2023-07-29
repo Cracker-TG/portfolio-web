@@ -2,14 +2,20 @@ import { Button, Input, Textarea, Typography } from "../BaseComponent";
 import { useForm } from "react-hook-form";
 import Components from "@/components";
 import Box from "../box";
+import { useMutation } from "react-query";
+import api from "@/api";
 
-interface IFormValues {
+export interface IFormValues {
   subject: string;
   email: string;
   message: string;
 }
 
 function ContactForm(): JSX.Element {
+  const createContactMutation = useMutation({
+    mutationFn: api.createContact,
+  });
+
   const defaultValues = {
     subject: "",
     email: "",
@@ -24,7 +30,14 @@ function ContactForm(): JSX.Element {
   } = useForm<IFormValues>({ defaultValues });
 
   const onSubmit = (value: IFormValues) => {
-    console.log({ value, errors });
+    createContactMutation.mutate(value, {
+      onSuccess: () => {
+        alert("success");
+      },
+      onError: (err) => {
+        console.log({ err });
+      },
+    });
   };
 
   return (
