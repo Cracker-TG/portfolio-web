@@ -1,21 +1,30 @@
-export {};
 import Box from "@/components/box";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
+import { UseFormRegister, FieldError } from "react-hook-form";
 
-type Props = {
+interface IProps {
   label: string;
-};
+  register: UseFormRegister<any>;
+  name: string;
+  required?: boolean;
+  pattern?: any;
+  error?: FieldError;
+}
 
 interface IStyleProps {
+  error?: FieldError;
+}
+
+interface IStyleLabelProps {
   isFocused: boolean;
   hasText: boolean;
 }
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<IStyleProps>`
   width: 100%;
   padding: 10px;
-  border: 2px solid #606060;
+  border: 2px solid ${({ error }) => (error ? "#ff9737 " : "#606060")};
   border-radius: 10px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -23,7 +32,7 @@ const StyledInput = styled.input`
   height: 60px;
 `;
 
-const StyleLabel = styled.label<IStyleProps>`
+const StyleLabel = styled.label<IStyleLabelProps>`
   position: absolute;
   pointer-events: none;
   left: 15px;
@@ -37,7 +46,14 @@ const StyleLabel = styled.label<IStyleProps>`
   transition: all 0.3s ease;
 `;
 
-function Input({ label }: Props): JSX.Element {
+function Input({
+  label,
+  register,
+  name,
+  pattern,
+  error,
+  required,
+}: IProps): JSX.Element {
   const [isFocused, setIsFocused] = useState(false);
   const [text, setText] = useState("");
 
@@ -59,12 +75,11 @@ function Input({ label }: Props): JSX.Element {
         {label}
       </StyleLabel>
       <StyledInput
+        {...register(name, { required, onChange: handleInputChange, pattern })}
         type="text"
-        required
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
-        onChange={handleInputChange}
-        value={text}
+        error={error}
       ></StyledInput>
     </Box>
   );

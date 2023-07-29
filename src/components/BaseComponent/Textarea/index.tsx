@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { UseFormRegister } from "react-hook-form";
 import styled from "styled-components";
 
 const InputContainer = styled.div`
@@ -8,6 +9,9 @@ const InputContainer = styled.div`
 
 interface IProps {
   label: string;
+  register: UseFormRegister<any>;
+  name: string;
+  required?: boolean;
 }
 
 interface IStyleProps {
@@ -40,7 +44,7 @@ const InputLabel = styled.label<IStyleProps>`
   transition: all 0.3s ease;
 `;
 
-const Textarea = ({ label }: IProps): JSX.Element => {
+const Textarea = ({ label, name, required, register }: IProps): JSX.Element => {
   const [isFocused, setIsFocused] = useState(false);
   const [text, setText] = useState("");
 
@@ -59,10 +63,9 @@ const Textarea = ({ label }: IProps): JSX.Element => {
   return (
     <InputContainer>
       <StyledTextarea
-        required
+        {...register(name, { onChange: handleTextareaChange, required })}
         onFocus={handleTextareaFocus}
         onBlur={handleTextareaBlur}
-        onChange={handleTextareaChange}
         value={text}
         rows={6}
       />

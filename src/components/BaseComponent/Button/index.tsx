@@ -6,8 +6,24 @@ type Props = {
 } & IStyledProps;
 
 interface IStyledProps {
-  background?: string;
+  variant?: "primary" | "danger";
 }
+
+const getVariantStyles = (variant: string) => {
+  switch (variant) {
+    case "primary":
+      return `
+        background-color: #7fff72;
+      `;
+    case "danger":
+      return `
+        background-color: #ff9737;
+        color: #ffffff;
+      `;
+    default:
+      return "";
+  }
+};
 
 const StyleButton = styled.div<IStyledProps>`
   display: flex;
@@ -16,7 +32,7 @@ const StyleButton = styled.div<IStyledProps>`
   cursor: pointer;
   height: 60px;
   width: 100%;
-  ${({ background }) => background && `background: ${background}`};
+  ${({ variant }) => variant && getVariantStyles(variant)}
   border-radius: 10px;
 `;
 
