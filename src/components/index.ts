@@ -5,6 +5,9 @@ import Footer from "./footer";
 import Box from "./box";
 import SubTitle from "./subTitle";
 import ButtonSheen from "./buttonSheen";
+import TypingText from "./typingText";
+import Cursor from "./typingText/cursor";
+import ContactForm from "./contactForm";
 
 export default {
   Wrapper,
@@ -14,4 +17,7 @@ export default {
   Box,
   SubTitle,
   ButtonSheen,
+  TypingText,
+  Cursor,
+  ContactForm,
 };

@@ -1,29 +1,32 @@
-export {};
-import Box from "@/components/box";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 
-type Props = {
+const InputContainer = styled.div`
+  position: relative;
+  margin-bottom: 20px;
+`;
+
+interface IProps {
   label: string;
-};
+}
 
 interface IStyleProps {
   isFocused: boolean;
   hasText: boolean;
 }
 
-const StyledInput = styled.input`
+const StyledTextarea = styled.textarea`
   width: 100%;
   padding: 10px;
   border: 2px solid #606060;
   border-radius: 10px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-bottom-color 0.3s ease;
   font-size: 16px;
-  height: 60px;
+  resize: vertical; /* Allow vertical resizing of the textarea */
 `;
 
-const StyleLabel = styled.label<IStyleProps>`
+const InputLabel = styled.label<IStyleProps>`
   position: absolute;
   pointer-events: none;
   left: 15px;
@@ -37,37 +40,37 @@ const StyleLabel = styled.label<IStyleProps>`
   transition: all 0.3s ease;
 `;
 
-function Input({ label }: Props): JSX.Element {
+const Textarea = ({ label }: IProps): JSX.Element => {
   const [isFocused, setIsFocused] = useState(false);
   const [text, setText] = useState("");
 
-  const handleInputFocus = () => {
+  const handleTextareaFocus = () => {
     setIsFocused(true);
   };
 
-  const handleInputBlur = () => {
+  const handleTextareaBlur = () => {
     setIsFocused(false);
   };
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleTextareaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value);
   };
 
   return (
-    <Box flexDirection={"column"} position={"relative"}>
-      <StyleLabel isFocused={isFocused} hasText={!!text}>
-        {label}
-      </StyleLabel>
-      <StyledInput
-        type="text"
+    <InputContainer>
+      <StyledTextarea
         required
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        onChange={handleInputChange}
+        onFocus={handleTextareaFocus}
+        onBlur={handleTextareaBlur}
+        onChange={handleTextareaChange}
         value={text}
-      ></StyledInput>
-    </Box>
+        rows={6}
+      />
+      <InputLabel isFocused={isFocused} hasText={!!text}>
+        {label}
+      </InputLabel>
+    </InputContainer>
   );
-}
+};
 
-export default Input;
+export default Textarea;

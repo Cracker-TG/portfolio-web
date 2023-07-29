@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Icons from "../BaseComponent/Icons";
 
-function Footer(): JSX.Element {
-  const StyleFooter = styled.footer`
-    grid-column: 1 / span 2;
-    /* For Mobile Portrait View */
-    @media screen and (max-device-width: 480px) and (orientation: portrait) {
-      padding-bottom: 4rem;
-    }
-  `;
+const StyleFooter = styled.footer`
+  grid-column: 1 / span 2;
+  /* For Mobile Portrait View */
+  @media screen and (max-device-width: 480px) and (orientation: portrait) {
+    padding-bottom: 4rem;
+  }
+`;
 
+function Footer(): JSX.Element {
   return (
     <StyleFooter>
       <div className="colophon">

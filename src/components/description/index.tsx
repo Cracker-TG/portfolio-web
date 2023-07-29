@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-function Description(): JSX.Element {
-  const StyleDes = styled.div``;
+const StyleDes = styled.div``;
 
+function Description(): JSX.Element {
   return (
     <StyleDes>
       <p>

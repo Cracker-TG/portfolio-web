@@ -507,7 +507,6 @@ a:active {
 
 @media all and (min-width: 40em) {
   .colophon__text {
-    display: block;
     font-size: 0.8333333333rem;
   }
 }

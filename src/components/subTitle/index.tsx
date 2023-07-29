@@ -5,11 +5,11 @@ type Props = {
   children?: JSX.Element | JSX.Element[];
 };
 
-function SubTitle({ text }: Props): JSX.Element {
-  const StyleTitle = styled.div`
-    font-size: 1rem;
-  `;
+const StyleTitle = styled.div`
+  font-size: 1rem;
+`;
 
+function SubTitle({ text }: Props): JSX.Element {
   return <StyleTitle>{text}</StyleTitle>;
 }
 
