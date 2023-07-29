@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TypingText from "./typing";
 import Components from "@/components";
 

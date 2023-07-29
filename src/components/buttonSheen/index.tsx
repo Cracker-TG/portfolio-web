@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { Button } from "../BaseComponent";
 interface IProps {
   text: string;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;

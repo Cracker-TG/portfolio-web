@@ -1,4 +1,3 @@
-import shouldForwardProp from "@styled-system/should-forward-prop";
 import styled from "styled-components";
 import { TypographyProps } from "styled-system";
 
