@@ -12,10 +12,6 @@ export interface IFormValues {
 }
 
 function ContactForm(): JSX.Element {
-  const createContactMutation = useMutation({
-    mutationFn: api.createContact,
-  });
-
   const defaultValues = {
     subject: "",
     email: "",
@@ -29,15 +25,13 @@ function ContactForm(): JSX.Element {
     reset,
   } = useForm<IFormValues>({ defaultValues });
 
-  const onSubmit = (value: IFormValues) => {
-    createContactMutation.mutate(value, {
-      onSuccess: () => {
-        alert("success");
-      },
-      onError: (err) => {
-        console.log({ err });
-      },
-    });
+  const createContactMutation = useMutation({
+    mutationFn: api.contacts.createContact,
+  });
+
+  const onSubmit = async (value: IFormValues) => {
+    const { data } = await createContactMutation.mutateAsync(value);
+    console.log({ data });
   };
 
   return (
