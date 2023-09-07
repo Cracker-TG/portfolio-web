@@ -1,9 +1,11 @@
-import { Button, Input, Textarea, Typography } from "../BaseComponent";
+import { Alert, Button, Input, Textarea, Typography } from "../BaseComponent";
 import { useForm } from "react-hook-form";
 import Components from "@/components";
 import Box from "../box";
 import { useMutation } from "react-query";
 import api from "@/api";
+import type { IAlertHandle } from "../BaseComponent/Alert";
+import { useRef } from "react";
 
 export interface IFormValues {
   subject: string;
@@ -12,6 +14,8 @@ export interface IFormValues {
 }
 
 function ContactForm(): JSX.Element {
+  const alertRef = useRef<IAlertHandle>(null);
+
   const defaultValues = {
     subject: "",
     email: "",
@@ -31,11 +35,26 @@ function ContactForm(): JSX.Element {
 
   const onSubmit = async (value: IFormValues) => {
     const { data } = await createContactMutation.mutateAsync(value);
-    console.log({ data });
+    console.log({ data: data.data });
+    if (data.success) {
+      reset(defaultValues);
+      alertRef.current?.open();
+    }
   };
 
   return (
-    <Components.Box flexDirection={"column"} gap={30}>
+    <Components.Box flexDirection={"column"} gap={30} position={"relative"}>
+      <Alert
+        ref={alertRef}
+        type="success"
+        message="Thank You"
+        autoCloseMs={3000}
+      />
+      <div
+        className="cf-turnstile"
+        data-sitekey="yourSitekey"
+        data-callback="javascriptCallback"
+      ></div>
       <Typography text="GET IN TOUCH" />
       <Input register={register} label="Subject" name="subject" />
       <Input
