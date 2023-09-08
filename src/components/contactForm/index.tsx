@@ -1,5 +1,5 @@
 import { Alert, Button, Input, Textarea, Typography } from "../BaseComponent";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Components from "@/components";
 import Box from "../box";
 import { useMutation } from "react-query";
