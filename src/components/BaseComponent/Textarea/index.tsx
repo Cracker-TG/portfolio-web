@@ -66,7 +66,6 @@ const Textarea = ({ label, name, required, register }: IProps): JSX.Element => {
         {...register(name, { onChange: handleTextareaChange, required })}
         onFocus={handleTextareaFocus}
         onBlur={handleTextareaBlur}
-        value={text}
         rows={6}
       />
       <InputLabel isFocused={isFocused} hasText={!!text}>

@@ -1,19 +1,29 @@
 import { Alert, Button, Input, Textarea, Typography } from "../BaseComponent";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import Components from "@/components";
 import Box from "../box";
 import { useMutation } from "react-query";
 import api from "@/api";
 import type { IAlertHandle } from "../BaseComponent/Alert";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface IFormValues {
   subject: string;
   email: string;
   message: string;
+  token: string;
+}
+
+interface ITurnstile {
+  token: string;
+  widgetId: string;
 }
 
 function ContactForm(): JSX.Element {
+  const [turnstileData, setTurnstile] = useState<ITurnstile>({
+    widgetId: "",
+    token: "",
+  });
   const alertRef = useRef<IAlertHandle>(null);
 
   const defaultValues = {
@@ -34,13 +44,36 @@ function ContactForm(): JSX.Element {
   });
 
   const onSubmit = async (value: IFormValues) => {
-    const { data } = await createContactMutation.mutateAsync(value);
-    console.log({ data: data.data });
+    const { data } = await createContactMutation.mutateAsync({
+      ...value,
+      token: turnstileData.token,
+    });
+
     if (data.success) {
-      reset(defaultValues);
+      reset();
       alertRef.current?.open();
+      setTurnstile((prev) => ({ ...prev, token: resetTurnstileToken() }));
     }
   };
+
+  const resetTurnstileToken = () => {
+    return turnstile.reset(turnstileData.widgetId);
+  };
+
+  const initTurnstile = () => {
+    const id = turnstile.render("#turnstile-container", {
+      sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
+      callback: function (token: string) {
+        setTurnstile((prev) => ({ ...prev, token }));
+      },
+    });
+
+    setTurnstile((prev) => ({ ...prev, widgetId: id }));
+  };
+
+  useEffect(() => {
+    initTurnstile();
+  }, []);
 
   return (
     <Components.Box flexDirection={"column"} gap={30} position={"relative"}>
@@ -50,11 +83,6 @@ function ContactForm(): JSX.Element {
         message="Thank You"
         autoCloseMs={3000}
       />
-      <div
-        className="cf-turnstile"
-        data-sitekey="yourSitekey"
-        data-callback="javascriptCallback"
-      ></div>
       <Typography text="GET IN TOUCH" />
       <Input register={register} label="Subject" name="subject" />
       <Input
@@ -77,6 +105,7 @@ function ContactForm(): JSX.Element {
           <Typography text="Clear" />
         </Button>
       </Box>
+      <div id="turnstile-container"></div>
     </Components.Box>
   );
 }
