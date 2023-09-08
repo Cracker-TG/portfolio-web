@@ -31,7 +31,7 @@ function Alert(
   { type, message, autoCloseMs }: AlertProps,
   ref: Ref<IAlertHandle>
 ) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useImperativeHandle(ref, () => ({
     open: () => {
