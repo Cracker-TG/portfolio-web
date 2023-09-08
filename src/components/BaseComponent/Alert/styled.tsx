@@ -5,7 +5,6 @@ export const AlertContainer = styled.div`
   position: absolute;
   justify-content: space-between;
   width: 100%;
-  top: -1rem;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -13,8 +12,6 @@ export const AlertContainer = styled.div`
   font-size: 16px;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.3s ease, max-height 0.3s ease;
-  opacity: 1;
   max-height: 100px;
 
   &.closed {

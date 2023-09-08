@@ -6,6 +6,7 @@ import { useMutation } from "react-query";
 import api from "@/api";
 import type { IAlertHandle } from "../BaseComponent/Alert";
 import { useEffect, useRef, useState } from "react";
+import LoadingSpinner from "../loading";
 
 export interface IFormValues {
   subject: string;
@@ -98,10 +99,22 @@ function ContactForm(): JSX.Element {
       />
       <Textarea register={register} label="Message" name="message" />
       <Box gap={10}>
-        <Button onClick={handleSubmit(onSubmit)} variant="primary">
-          <Typography text="Submit" />
+        <Button
+          disabled={createContactMutation.isLoading}
+          onClick={handleSubmit(onSubmit)}
+          variant="primary"
+        >
+          {createContactMutation.isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <Typography text="Submit" />
+          )}
         </Button>
-        <Button onClick={() => reset(defaultValues)} variant="danger">
+        <Button
+          disabled={createContactMutation.isLoading}
+          onClick={() => reset(defaultValues)}
+          variant="danger"
+        >
           <Typography text="Clear" />
         </Button>
       </Box>

@@ -3,10 +3,12 @@ import styled from "styled-components";
 type Props = {
   children: JSX.Element | JSX.Element[];
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  disabled?: boolean;
 } & IStyledProps;
 
 interface IStyledProps {
   variant?: "primary" | "danger";
+  disabled?: boolean;
 }
 
 const getVariantStyles = (variant: string) => {
@@ -34,11 +36,14 @@ const StyleButton = styled.div<IStyledProps>`
   width: 100%;
   ${({ variant }) => variant && getVariantStyles(variant)}
   border-radius: 10px;
+  ${({ disabled }) =>
+    disabled &&
+    "opacity: 0.6; cursor: not-allowed; pointer-events: none; background: #AFAFAF"}
 `;
 
-function Button({ children, onClick, ...rest }: Props): JSX.Element {
+function Button({ children, onClick, disabled, ...rest }: Props): JSX.Element {
   return (
-    <StyleButton {...rest} onClick={onClick}>
+    <StyleButton {...rest} onClick={onClick} disabled={disabled}>
       {children}
     </StyleButton>
   );

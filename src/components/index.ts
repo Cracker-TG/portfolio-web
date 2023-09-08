@@ -8,6 +8,7 @@ import ButtonSheen from "./buttonSheen";
 import TypingText from "./typingText";
 import Cursor from "./typingText/cursor";
 import ContactForm from "./contactForm";
+import LoadingSpinner from "./loading";
 
 export default {
   Wrapper,
@@ -20,4 +21,5 @@ export default {
   TypingText,
   Cursor,
   ContactForm,
+  LoadingSpinner,
 };
