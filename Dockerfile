@@ -33,7 +33,7 @@ WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
 RUN rm -rf ./*
 
-COPY ./certs/live  /etc/letsencrypt/live/
+# COPY ./certs/live  /etc/letsencrypt/live/
 # COPY --from=build /usr/build/certs /var/www/certbot
 # Copy static assets from builder stage
 COPY --from=build /usr/build/dist .

@@ -39,5 +39,6 @@ module.exports = {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["off"],
     "no-underscore-dangle": 0,
+    "react/react-in-jsx-scope": "off",
   },
 };

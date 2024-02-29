@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Page from "@/pages";
+import { Suspense } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Page from '@/pages';
 
-function ApplicationRouter(): any {
+function ApplicationRouter(): JSX.Element {
   return (
     <BrowserRouter basename="/">
       <Suspense>
